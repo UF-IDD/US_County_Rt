@@ -14,6 +14,4 @@ local.
 2. County-level characteristics: ["tidycensus" package version 0.9.9.2](https://cran.r-project.org/web/packages/tidycensus/index.html)
 3. State-level NPIs: [COVID-19 US State Policy Database, CUSP](https://docs.google.com/spreadsheets/d/1zu9qEWI8PsOI_i8nI_S29HDGHlIp2lfVMsGxpQ5tvAQ/edit#gid=973655443)
 4. Inference of effective reproduction number
-[Pyomo](http://www.pyomo.org)
-[IPOPT](https://coin-or.github.io/Ipopt/)
-[Epi_inference](to be released; details can be request to Carl Laird via cdlaird@sandia.gov)
+[Pyomo](http://www.pyomo.org);[IPOPT](https://coin-or.github.io/Ipopt/); and Epi_inference(to be released; details can be request to Carl Laird via cdlaird@sandia.gov)
