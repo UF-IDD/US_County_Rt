@@ -1,6 +1,8 @@
 #  Effect of specific non-pharmaceutical intervention policies on SARS-CoV-2 transmission in the counties of the United States
 
-[Preprint at medRxiv](https://www.medrxiv.org/content/10.1101/2020.10.29.20221036v1): Yang B, Huang AT, Garcia-Carreras B, Hart WE, Staid A, Hitchings M, Lee EC, Howe CJ, Grantz KH, Wesolowski A, Lemaitre JC. Effect of specific non-pharmaceutical intervention policies on SARS-CoV-2 transmission in the counties of the United States. medRxiv. 2020 Jan 1.
+[Preprint at medRxiv](https://www.medrxiv.org/content/10.1101/2020.10.29.20221036v1): Yang B, Huang AT, Garcia-Carreras B, Hart WE, Staid A, Hitchings M, Lee EC, Howe CJ, Grantz KH, Wesolowski A, Lemaitre JC. Effect of specific non-pharmaceutical intervention policies on SARS-CoV-2 transmission in the counties of the United States. medRxiv. 2020 Jan 1. 
+
+Correspondance regarding this study should be addressed to Derek A.T. Cummings (datc@ufl.edu), Carl D. Laird (cdlaird@sandia.gov) or Justin Lessler (justin@jhu.edu).
 
 All statatiscal analyses were performed with R version 4.0.2 on Mac. The main and sensitivity analyses were performed with the markdown file 'US_Rt_interventions.Rmd', which will return figures and tables shown in the manuscript.
 
@@ -15,3 +17,4 @@ local.
 3. State-level NPIs: [COVID-19 US State Policy Database, CUSP](https://docs.google.com/spreadsheets/d/1zu9qEWI8PsOI_i8nI_S29HDGHlIp2lfVMsGxpQ5tvAQ/edit#gid=973655443)
 4. Inference of effective reproduction number
 [Pyomo](http://www.pyomo.org);[IPOPT](https://coin-or.github.io/Ipopt/); and Epi_inference(to be released; details can be request to Carl Laird via cdlaird@sandia.gov)
+5. SEIR model structure: [Lemaitre J et al., A scenario modeling pipeline for COVID-19 emergency planning](https://www.medrxiv.org/content/10.1101/2020.06.11.20127894v2)
