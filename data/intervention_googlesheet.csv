@@ -1,0 +1,316 @@
+state_name,intervention,dateStart,dateEnd
+Alabama,ban_nursing_home_visit,2020-03-19,2020-07-02
+Alabama,daycare_close,2020-03-20,2020-07-02
+Alabama,face_mask,2020-05-11,2020-07-02
+Alabama,lifestyle_close,2020-03-19,2020-05-22
+Alabama,lv3_stay_home,2020-03-28,2020-04-30
+Alabama,school_close,2020-03-19,2020-07-02
+Alabama,state_of_emergency,2020-03-13,2020-07-02
+Alabama,suspend_medical,2020-03-19,2020-04-30
+Alaska,face_mask,2020-04-24,2020-07-02
+Alaska,lifestyle_close,2020-03-18,2020-05-08
+Alaska,lv3_stay_home,2020-03-28,2020-04-24
+Alaska,school_close,2020-03-16,2020-07-02
+Alaska,state_of_emergency,2020-03-11,2020-07-02
+Alaska,suspend_medical,2020-03-19,2020-04-20
+Arizona,face_mask,2020-05-08,2020-07-02
+Arizona,lifestyle_close,2020-03-20,2020-05-16
+Arizona,lv3_stay_home,2020-03-30,2020-05-16
+Arizona,school_close,2020-03-16,2020-07-02
+Arizona,state_of_emergency,2020-03-11,2020-07-02
+Arizona,suspend_medical,2020-03-21,2020-05-01
+Arkansas,ban_nursing_home_visit,2020-03-13,2020-07-02
+Arkansas,face_mask,2020-05-11,2020-07-02
+Arkansas,lifestyle_close,2020-03-19,2020-05-11
+Arkansas,school_close,2020-03-17,2020-07-02
+Arkansas,state_of_emergency,2020-03-11,2020-07-02
+Arkansas,suspend_medical,2020-04-03,2020-04-27
+California,face_mask,2020-05-05,2020-07-02
+California,lifestyle_close,2020-03-19,2020-07-02
+California,lv3_stay_home,2020-03-19,2020-07-02
+California,state_of_emergency,2020-03-04,2020-07-02
+California,suspend_medical,2020-03-19,2020-04-22
+Colorado,ban_nursing_home_visit,2020-03-12,2020-07-02
+Colorado,face_mask,2020-04-23,2020-07-02
+Colorado,lifestyle_close,2020-03-17,2020-06-18
+Colorado,lv3_stay_home,2020-03-26,2020-05-01
+Colorado,school_close,2020-03-23,2020-07-02
+Colorado,state_of_emergency,2020-03-11,2020-07-02
+Colorado,suspend_medical,2020-03-23,2020-04-27
+Connecticut,ban_nursing_home_visit,2020-03-09,2020-07-02
+Connecticut,face_mask,2020-04-03,2020-07-02
+Connecticut,lifestyle_close,2020-03-16,2020-06-17
+Connecticut,lv3_stay_home,2020-03-23,2020-05-20
+Connecticut,school_close,2020-03-17,2020-07-02
+Connecticut,state_of_emergency,2020-03-10,2020-07-02
+Delaware,daycare_close,2020-04-06,2020-07-02
+Delaware,face_mask,2020-04-28,2020-07-02
+Delaware,lifestyle_close,2020-03-16,2020-06-01
+Delaware,lv3_stay_home,2020-03-24,2020-06-01
+Delaware,school_close,2020-03-16,2020-07-02
+Delaware,state_of_emergency,2020-03-13,2020-07-02
+District of Columbia,face_mask,2020-04-15,2020-07-02
+District of Columbia,lifestyle_close,2020-03-16,2020-06-22
+District of Columbia,lv3_stay_home,2020-03-25,2020-05-29
+District of Columbia,school_close,2020-03-16,2020-07-02
+District of Columbia,state_of_emergency,2020-03-11,2020-07-02
+Florida,ban_nursing_home_visit,2020-03-15,2020-07-02
+Florida,face_mask,2020-05-11,2020-07-02
+Florida,lifestyle_close,2020-03-20,2020-07-02
+Florida,lv3_stay_home,2020-04-03,2020-05-18
+Florida,school_close,2020-03-17,2020-07-02
+Florida,state_of_emergency,2020-03-09,2020-07-02
+Florida,suspend_medical,2020-03-20,2020-05-08
+Georgia,ban_nursing_home_visit,2020-04-03,2020-07-02
+Georgia,face_mask,2020-04-27,2020-07-02
+Georgia,lifestyle_close,2020-04-03,2020-04-27
+Georgia,lv3_stay_home,2020-04-03,2020-05-01
+Georgia,school_close,2020-03-18,2020-07-02
+Georgia,state_of_emergency,2020-03-14,2020-07-02
+Hawaii,ban_nursing_home_visit,2020-03-17,2020-07-02
+Hawaii,face_mask,2020-04-16,2020-07-02
+Hawaii,lifestyle_close,2020-03-17,2020-07-02
+Hawaii,lv3_stay_home,2020-03-25,2020-06-30
+Hawaii,school_close,2020-03-16,2020-07-02
+Hawaii,state_of_emergency,2020-03-04,2020-07-02
+Hawaii,suspend_medical,2020-04-16,2020-04-26
+Idaho,lifestyle_close,2020-03-25,2020-05-30
+Idaho,lv3_stay_home,2020-03-25,2020-05-01
+Idaho,school_close,2020-03-24,2020-07-02
+Idaho,state_of_emergency,2020-03-13,2020-07-02
+Illinois,daycare_close,2020-03-23,2020-07-02
+Illinois,face_mask,2020-05-01,2020-07-02
+Illinois,lifestyle_close,2020-03-16,2020-06-26
+Illinois,lv3_stay_home,2020-03-21,2020-05-29
+Illinois,school_close,2020-03-17,2020-07-02
+Illinois,state_of_emergency,2020-03-09,2020-07-02
+Indiana,face_mask,2020-05-01,2020-07-02
+Indiana,lifestyle_close,2020-03-16,2020-06-12
+Indiana,lv3_stay_home,2020-03-25,2020-05-18
+Indiana,school_close,2020-03-20,2020-07-02
+Indiana,state_of_emergency,2020-03-06,2020-07-02
+Indiana,suspend_medical,2020-03-16,2020-04-27
+Iowa,lifestyle_close,2020-03-17,2020-05-22
+Iowa,lv3_stay_home,2020-03-26,2020-05-15
+Iowa,school_close,2020-04-02,2020-07-02
+Iowa,state_of_emergency,2020-03-09,2020-07-02
+Iowa,suspend_medical,2020-03-27,2020-04-27
+Kansas,lifestyle_close,2020-03-30,2020-05-04
+Kansas,lv3_stay_home,2020-03-30,2020-05-04
+Kansas,school_close,2020-03-18,2020-07-02
+Kansas,state_of_emergency,2020-03-12,2020-07-02
+Kentucky,daycare_close,2020-03-23,2020-07-02
+Kentucky,face_mask,2020-05-11,2020-07-02
+Kentucky,lifestyle_close,2020-03-16,2020-06-01
+Kentucky,lv3_stay_home,2020-03-26,2020-05-11
+Kentucky,school_close,2020-03-16,2020-07-02
+Kentucky,state_of_emergency,2020-03-06,2020-07-02
+Kentucky,suspend_medical,2020-03-18,2020-05-06
+Louisiana,ban_nursing_home_visit,2020-03-12,2020-07-02
+Louisiana,face_mask,2020-05-01,2020-07-02
+Louisiana,lifestyle_close,2020-03-17,2020-05-15
+Louisiana,lv3_stay_home,2020-03-23,2020-05-15
+Louisiana,school_close,2020-03-16,2020-07-02
+Louisiana,state_of_emergency,2020-03-11,2020-07-02
+Louisiana,suspend_medical,2020-03-18,2020-04-27
+Maine,face_mask,2020-05-01,2020-07-02
+Maine,lifestyle_close,2020-03-18,2020-07-01
+Maine,lv3_stay_home,2020-03-25,2020-05-31
+Maine,school_close,2020-04-02,2020-07-02
+Maine,state_of_emergency,2020-03-15,2020-07-02
+Maryland,ban_nursing_home_visit,2020-04-05,2020-07-02
+Maryland,daycare_close,2020-03-30,2020-07-02
+Maryland,face_mask,2020-04-18,2020-07-02
+Maryland,lifestyle_close,2020-03-16,2020-07-02
+Maryland,lv3_stay_home,2020-03-23,2020-05-15
+Maryland,school_close,2020-03-16,2020-07-02
+Maryland,state_of_emergency,2020-03-05,2020-07-02
+Maryland,suspend_medical,2020-03-24,2020-05-07
+Massachusetts,ban_nursing_home_visit,2020-03-16,2020-07-02
+Massachusetts,daycare_close,2020-03-23,2020-07-02
+Massachusetts,face_mask,2020-05-06,2020-07-02
+Massachusetts,lifestyle_close,2020-03-17,2020-07-02
+Massachusetts,lv3_stay_home,2020-03-24,2020-05-18
+Massachusetts,school_close,2020-03-16,2020-07-02
+Massachusetts,state_of_emergency,2020-03-10,2020-07-02
+Massachusetts,suspend_medical,2020-03-18,2020-05-18
+Michigan,ban_nursing_home_visit,2020-03-14,2020-07-02
+Michigan,daycare_close,2020-03-24,2020-07-02
+Michigan,face_mask,2020-04-26,2020-07-02
+Michigan,lifestyle_close,2020-03-16,2020-07-02
+Michigan,lv3_stay_home,2020-03-24,2020-06-01
+Michigan,school_close,2020-03-16,2020-07-02
+Michigan,state_of_emergency,2020-03-10,2020-07-02
+Michigan,suspend_medical,2020-03-21,2020-05-29
+Minnesota,ban_nursing_home_visit,2020-03-16,2020-07-02
+Minnesota,face_mask,2020-06-01,2020-07-02
+Minnesota,lifestyle_close,2020-03-17,2020-06-10
+Minnesota,lv3_stay_home,2020-03-28,2020-05-18
+Minnesota,school_close,2020-03-18,2020-07-02
+Minnesota,state_of_emergency,2020-03-13,2020-07-02
+Minnesota,suspend_medical,2020-03-23,2020-05-10
+Mississippi,ban_nursing_home_visit,2020-03-24,2020-07-02
+Mississippi,face_mask,2020-05-07,2020-07-02
+Mississippi,lifestyle_close,2020-03-24,2020-06-01
+Mississippi,lv3_stay_home,2020-04-03,2020-04-27
+Mississippi,school_close,2020-03-20,2020-07-02
+Mississippi,state_of_emergency,2020-03-14,2020-07-02
+Mississippi,suspend_medical,2020-03-19,2020-04-24
+Missouri,ban_nursing_home_visit,2020-04-06,2020-07-02
+Missouri,lifestyle_close,2020-03-23,2020-05-04
+Missouri,lv3_stay_home,2020-04-06,2020-05-04
+Missouri,school_close,2020-03-23,2020-07-02
+Missouri,state_of_emergency,2020-03-13,2020-07-02
+Montana,ban_nursing_home_visit,2020-03-15,2020-07-02
+Montana,lifestyle_close,2020-03-20,2020-05-15
+Montana,lv3_stay_home,2020-03-28,2020-04-27
+Montana,school_close,2020-03-16,2020-07-02
+Montana,state_of_emergency,2020-03-12,2020-07-02
+Nebraska,face_mask,2020-05-04,2020-07-02
+Nebraska,lifestyle_close,2020-04-03,2020-06-22
+Nebraska,school_close,2020-04-03,2020-07-02
+Nebraska,state_of_emergency,2020-03-13,2020-07-02
+Nebraska,suspend_medical,2020-04-03,2020-05-04
+Nevada,face_mask,2020-05-09,2020-07-02
+Nevada,lifestyle_close,2020-03-21,2020-05-29
+Nevada,lv3_stay_home,2020-03-21,2020-05-09
+Nevada,school_close,2020-03-16,2020-07-02
+Nevada,state_of_emergency,2020-03-12,2020-07-02
+New Hampshire,ban_nursing_home_visit,2020-03-15,2020-07-02
+New Hampshire,face_mask,2020-05-01,2020-07-02
+New Hampshire,lifestyle_close,2020-03-16,2020-06-29
+New Hampshire,lv3_stay_home,2020-03-28,2020-06-16
+New Hampshire,school_close,2020-03-16,2020-07-02
+New Hampshire,state_of_emergency,2020-03-13,2020-07-02
+New Jersey,daycare_close,2020-03-18,2020-07-02
+New Jersey,face_mask,2020-04-08,2020-07-02
+New Jersey,lifestyle_close,2020-03-16,2020-07-02
+New Jersey,lv3_stay_home,2020-03-21,2020-06-09
+New Jersey,school_close,2020-03-18,2020-07-02
+New Jersey,state_of_emergency,2020-03-09,2020-07-02
+New Jersey,suspend_medical,2020-03-27,2020-05-26
+New Mexico,ban_nursing_home_visit,2020-03-13,2020-07-02
+New Mexico,face_mask,2020-05-06,2020-07-02
+New Mexico,lifestyle_close,2020-03-19,2020-07-02
+New Mexico,lv3_stay_home,2020-03-24,2020-06-30
+New Mexico,school_close,2020-03-16,2020-07-02
+New Mexico,state_of_emergency,2020-03-11,2020-07-02
+New Mexico,suspend_medical,2020-03-27,2020-04-30
+New York,ban_nursing_home_visit,2020-03-13,2020-07-02
+New York,face_mask,2020-04-17,2020-07-02
+New York,lifestyle_close,2020-03-16,2020-07-02
+New York,lv3_stay_home,2020-03-22,2020-06-13
+New York,school_close,2020-03-18,2020-07-02
+New York,state_of_emergency,2020-03-07,2020-07-02
+New York,suspend_medical,2020-03-20,2020-07-02
+North Carolina,ban_nursing_home_visit,2020-03-23,2020-07-02
+North Carolina,face_mask,2020-06-26,2020-07-02
+North Carolina,lifestyle_close,2020-03-17,2020-07-02
+North Carolina,lv3_stay_home,2020-03-30,2020-05-22
+North Carolina,school_close,2020-03-16,2020-07-02
+North Carolina,state_of_emergency,2020-03-10,2020-07-02
+North Dakota,ban_nursing_home_visit,2020-04-06,2020-07-02
+North Dakota,face_mask,2020-04-28,2020-07-02
+North Dakota,lifestyle_close,2020-03-20,2020-05-01
+North Dakota,school_close,2020-03-16,2020-07-02
+North Dakota,state_of_emergency,2020-03-13,2020-07-02
+Ohio,ban_nursing_home_visit,2020-03-11,2020-07-02
+Ohio,daycare_close,2020-03-26,2020-07-02
+Ohio,face_mask,2020-04-29,2020-07-02
+Ohio,lifestyle_close,2020-03-15,2020-06-10
+Ohio,lv3_stay_home,2020-03-24,2020-05-20
+Ohio,school_close,2020-03-17,2020-07-02
+Ohio,state_of_emergency,2020-03-09,2020-07-02
+Ohio,suspend_medical,2020-03-18,2020-05-01
+Oklahoma,ban_nursing_home_visit,2020-03-16,2020-07-02
+Oklahoma,lifestyle_close,2020-04-01,2020-05-01
+Oklahoma,lv3_stay_home,2020-04-01,2020-04-24
+Oklahoma,school_close,2020-03-17,2020-07-02
+Oklahoma,state_of_emergency,2020-03-15,2020-07-02
+Oklahoma,suspend_medical,2020-03-24,2020-04-24
+Oregon,daycare_close,2020-03-25,2020-07-02
+Oregon,face_mask,2020-05-09,2020-07-02
+Oregon,lifestyle_close,2020-03-17,2020-07-02
+Oregon,lv3_stay_home,2020-03-23,2020-06-19
+Oregon,school_close,2020-03-16,2020-07-02
+Oregon,state_of_emergency,2020-03-08,2020-07-02
+Oregon,suspend_medical,2020-03-18,2020-05-01
+Pennsylvania,ban_nursing_home_visit,2020-03-17,2020-07-02
+Pennsylvania,daycare_close,2020-03-17,2020-07-02
+Pennsylvania,face_mask,2020-04-19,2020-07-02
+Pennsylvania,lifestyle_close,2020-03-17,2020-07-03
+Pennsylvania,lv3_stay_home,2020-03-19,2020-06-05
+Pennsylvania,school_close,2020-03-16,2020-07-02
+Pennsylvania,state_of_emergency,2020-03-06,2020-07-02
+Pennsylvania,suspend_medical,2020-03-20,2020-04-27
+Rhode Island,ban_nursing_home_visit,2020-03-13,2020-07-02
+Rhode Island,daycare_close,2020-03-16,2020-07-02
+Rhode Island,face_mask,2020-04-18,2020-07-02
+Rhode Island,lifestyle_close,2020-03-17,2020-06-30
+Rhode Island,lv3_stay_home,2020-03-28,2020-05-09
+Rhode Island,school_close,2020-03-16,2020-07-02
+Rhode Island,state_of_emergency,2020-03-09,2020-07-02
+South Carolina,ban_nursing_home_visit,2020-03-15,2020-07-02
+South Carolina,lifestyle_close,2020-03-18,2020-07-02
+South Carolina,lv3_stay_home,2020-04-01,2020-05-04
+South Carolina,school_close,2020-03-16,2020-07-02
+South Carolina,state_of_emergency,2020-03-13,2020-07-02
+South Dakota,school_close,2020-03-16,2020-07-02
+South Dakota,state_of_emergency,2020-03-13,2020-07-02
+South Dakota,suspend_medical,2020-03-23,2020-04-28
+Tennessee,ban_nursing_home_visit,2020-03-23,2020-07-02
+Tennessee,lifestyle_close,2020-03-23,2020-05-22
+Tennessee,lv3_stay_home,2020-04-01,2020-05-01
+Tennessee,school_close,2020-03-20,2020-07-02
+Tennessee,state_of_emergency,2020-03-12,2020-07-02
+Tennessee,suspend_medical,2020-03-24,2020-05-01
+Texas,ban_nursing_home_visit,2020-03-21,2020-07-02
+Texas,face_mask,2020-05-08,2020-07-02
+Texas,lifestyle_close,2020-03-21,2020-05-18
+Texas,lv3_stay_home,2020-03-31,2020-05-01
+Texas,school_close,2020-03-23,2020-07-02
+Texas,state_of_emergency,2020-03-13,2020-07-02
+Texas,suspend_medical,2020-03-22,2020-04-21
+Utah,ban_nursing_home_visit,2020-04-01,2020-07-02
+Utah,face_mask,2020-04-10,2020-07-02
+Utah,lifestyle_close,2020-03-19,2020-05-01
+Utah,school_close,2020-03-16,2020-07-02
+Utah,state_of_emergency,2020-03-06,2020-07-02
+Utah,suspend_medical,2020-03-25,2020-04-22
+Vermont,ban_nursing_home_visit,2020-03-13,2020-07-02
+Vermont,daycare_close,2020-03-18,2020-07-02
+Vermont,face_mask,2020-04-17,2020-07-02
+Vermont,lifestyle_close,2020-03-17,2020-06-01
+Vermont,lv3_stay_home,2020-03-25,2020-05-15
+Vermont,school_close,2020-03-18,2020-07-02
+Vermont,state_of_emergency,2020-03-13,2020-07-02
+Vermont,suspend_medical,2020-03-20,2020-05-04
+Virginia,face_mask,2020-05-29,2020-07-02
+Virginia,lifestyle_close,2020-03-25,2020-07-01
+Virginia,lv3_stay_home,2020-03-30,2020-05-29
+Virginia,school_close,2020-03-16,2020-07-02
+Virginia,state_of_emergency,2020-03-12,2020-07-02
+Virginia,suspend_medical,2020-03-25,2020-05-01
+Washington,ban_nursing_home_visit,2020-03-16,2020-07-02
+Washington,face_mask,2020-05-04,2020-07-02
+Washington,lifestyle_close,2020-03-16,2020-07-02
+Washington,lv3_stay_home,2020-03-23,2020-06-01
+Washington,school_close,2020-03-17,2020-07-02
+Washington,state_of_emergency,2020-02-29,2020-07-02
+Washington,suspend_medical,2020-03-19,2020-04-29
+West Virginia,daycare_close,2020-03-26,2020-07-02
+West Virginia,face_mask,2020-05-04,2020-07-02
+West Virginia,lifestyle_close,2020-03-18,2020-06-05
+West Virginia,lv3_stay_home,2020-03-24,2020-05-04
+West Virginia,school_close,2020-03-16,2020-07-02
+West Virginia,state_of_emergency,2020-03-16,2020-07-02
+West Virginia,suspend_medical,2020-04-01,2020-04-20
+Wisconsin,lifestyle_close,2020-03-17,2020-05-13
+Wisconsin,lv3_stay_home,2020-03-25,2020-05-13
+Wisconsin,school_close,2020-03-18,2020-07-02
+Wisconsin,state_of_emergency,2020-03-12,2020-07-02
+Wyoming,daycare_close,2020-03-19,2020-07-02
+Wyoming,face_mask,2020-05-01,2020-07-02
+Wyoming,lifestyle_close,2020-03-19,2020-05-15
+Wyoming,school_close,2020-03-19,2020-07-02
+Wyoming,state_of_emergency,2020-03-13,2020-07-02
