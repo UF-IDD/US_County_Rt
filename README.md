@@ -11,9 +11,7 @@ Here we provided the data on county-level school closures dates ([school.csv](ht
 
 ##  External resources
 
-Below is the list of external repositories that are not synced with this repo
-(listed in .gitignore) but are cloned under the root directory of this repo at
-local.
+Below is the list of external repositories/resources that are used for the manuscript but are not synced with this repo.
 
 1. Daily number of confirmed COVID-19 cases and deaths: [USAFacts](https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/)
 2. County-level characteristics: ["tidycensus" package version 0.9.9.2](https://cran.r-project.org/web/packages/tidycensus/index.html)
