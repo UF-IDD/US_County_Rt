@@ -4,7 +4,7 @@
 
 Correspondance regarding this study should be addressed to Derek A.T. Cummings (datc@ufl.edu), Carl D. Laird (cdlaird@sandia.gov) or Justin Lessler (justin@jhu.edu).
 
-All statatiscal analyses were performed with R version 4.0.2 on Mac. The main and sensitivity analyses were performed with the markdown file 'US_Rt_interventions.Rmd', which will return figures and tables shown in the manuscript.
+All statatiscal analyses were performed with R version 4.0.2 on Mac. The main and sensitivity analyses were performed with the markdown file [US_Rt_interventions.Rmd](https://github.com/UF-IDD/US_County_Rt/blob/main/US_Rt_interventions.Rmd), which will return figures and tables shown in the manuscript.
 
 ## County-level school closure
 Here we provided the data on county-level school closures dates ([school.csv](https://github.com/UF-IDD/US_County_Rt/blob/main/data/school.csv)). Data on county-level public school (K-12) closure were collected by the UFCOVID Interventions Team by consulting the government websites of school district, county and state and local news sources.
