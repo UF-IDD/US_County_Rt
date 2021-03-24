@@ -6,6 +6,14 @@ Correspondance regarding this study should be addressed to Derek A.T. Cummings (
 
 All statatiscal analyses were performed with R version 4.0.2 on Mac. The main and sensitivity analyses were performed with the markdown file [US_Rt_interventions.Rmd](https://github.com/UF-IDD/US_County_Rt/blob/main/US_Rt_interventions.Rmd), which will return figures and tables shown in the manuscript.
 
+## Instruction
+Data on estimated effective numbers can be found in [rt](https://github.com/UF-IDD/US_County_Rt/tree/main/rt) folder with a seperate [Disclaimer](https://github.com/UF-IDD/US_County_Rt/blob/main/rt/README.md) for these estimates.
+
+Data on case and death numbers, covariates (NPIs and country-level characteristics), and estimates used for figure 4 can be found in [data] (https://github.com/UF-IDD/US_County_Rt/tree/main/data) folder.
+
+[Output](https://github.com/UF-IDD/US_County_Rt/tree/main/output) will store for plots and tables in the manuscript.
+
+
 ## County-level school closure
 Here we provided the data on county-level school closures dates ([school.csv](https://github.com/UF-IDD/US_County_Rt/blob/main/data/school.csv)). Data on county-level public school (K-12) closure were collected by the UFCOVID Interventions Team by consulting the government websites of school district, county and state and local news sources.
 
