@@ -9,7 +9,7 @@ All statatiscal analyses were performed with R version 4.0.2 on Mac. The main an
 ## Instruction
 Data on estimated effective numbers can be found in [rt](https://github.com/UF-IDD/US_County_Rt/tree/main/rt) folder with a seperate [Disclaimer](https://github.com/UF-IDD/US_County_Rt/blob/main/rt/README.md) for these estimates.
 
-Data on case and death numbers, covariates (NPIs and country-level characteristics), and estimates used for figure 4 can be found in [data] (https://github.com/UF-IDD/US_County_Rt/tree/main/data) folder.
+Data on case and death numbers, covariates (NPIs and country-level characteristics), and estimates used for figure 4 can be found in [data](https://github.com/UF-IDD/US_County_Rt/tree/main/data) folder.
 
 [Output](https://github.com/UF-IDD/US_County_Rt/tree/main/output) will store for plots and tables in the manuscript.
 
