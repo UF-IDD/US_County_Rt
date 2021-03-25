@@ -49,7 +49,8 @@ packages = c("knitr",
              "ggpubr",
              "GEEmediate",
              "mediation",
-             "tidyverse")
+             "tidyverse",
+             "fixest")
 
 irpkg(packages)
 
@@ -524,8 +525,8 @@ fig1d = countyRtTsSmrPlot(data.google, method = 'perfectCut')
 ## Fig. 1e & Fig. S1: weekly rt map
 ```{r fig 1e and S1, echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, include=FALSE}
 
-data(state_laea)
-data(fips_codes)
+data(state_laea, package = "tidycensus")
+data(fips_codes, package = "tidycensus")
 
 
 fips = read.csv('data/FIPS.csv')
@@ -554,7 +555,7 @@ weeks_dates = seq(as.Date("2020-02-08"),
 
 countyMapPlot = function(county_rt, week, supp){
 
-  data(county_laea)
+  data(county_laea, package = "tidycensus")
 
   cols.used = paste("W",
                   gsub("-", "", week),
@@ -602,7 +603,6 @@ countyMapPlot = function(county_rt, week, supp){
 countymap = lapply(weeks_dates, countyMapPlot, county_rt = county_rt, supp = FALSE)
 
 
-
 ```
 
 ## figure 1 output
@@ -613,8 +613,8 @@ sel = seq(from = length(countymap),
           to = 1, 
           by = -3)
 
-jpeg('../output/plot/fig_1.jpeg', width = 16*600, height = 18*600, res = 600)
-# pdf('../output/plot/fig_1.pdf',
+jpeg('output/plot/fig_1.jpeg', width = 16*600, height = 18*600, res = 600)
+# pdf('output/plot/fig_1.pdf',
 #     width = 16, height = 18)
 
 pR2 = ggarrange(fig1c,
@@ -736,7 +736,7 @@ p.intv$intervention = factor(p.intv$intervention,
 p.intv$level = 'state'
 p.intv$level[p.intv$intervention == 'earliest_date_school_closed'] = 'county'
  
-fig2A = ggplot(p.intv,
+fig2a = ggplot(p.intv,
         aes(x = date,
            y = proportion,
            color = intervention)) +
@@ -784,7 +784,7 @@ fig2A = ggplot(p.intv,
                         labels = c('County',
                                    'State'))
 
-fig2A
+fig2a
 
 ```
 
@@ -857,7 +857,7 @@ colors = rev(c('#053853',
            '#7301ed',
            '#abda00'))
 
-fig2B = ggplot(county_intervention_time,
+fig2b = ggplot(county_intervention_time,
                  aes(x = intervention_time,
                      y = intervention)) +
    geom_density_ridges(aes(fill = intervention,
@@ -903,7 +903,7 @@ fig2B = ggplot(county_intervention_time,
        y = "",
        title = 'b')
 
-fig2B
+fig2b
 
 ```
 
@@ -912,8 +912,8 @@ fig2B
 
 # jpeg('output/plot/fig_2.jpeg', width = 14*600, height = 15*600, res = 600)
 pdf('output/plot/fig_2.pdf', width = 14, height = 15)
-grid.arrange(fig2A,
-             fig2B,
+grid.arrange(fig2a,
+             fig2b,
              heights=c(4, 6),
              layout_matrix = rbind(1, 2))
 dev.off()
@@ -1075,7 +1075,7 @@ modelFit = function(model, dat, stateLevel){
 
     m = geeglm(fml.used,
                 data = dat,
-                id = Date,
+                id = FIPS,
                 corstr = "ar1",
                 weights = weights)
 
@@ -1283,7 +1283,7 @@ fig3B = ggplot(melt_mat,
         panel.grid.major = element_blank(),
         panel.background = element_blank(),
         panel.grid.minor = element_blank(),
-        plot.title = element_text(size = 20, face = 'bold'),
+        plot.title = element_text(size = 24, face = 'bold'),
         plot.title.position = "plot",
         legend.position = 'top') 
 
@@ -1371,13 +1371,14 @@ fig3A <- ggplot(data = est,
         strip.background = element_blank(),
         axis.title.x = element_text(size = 16, face = 'bold'),
         axis.title.y = element_text(size = 16, face = 'bold'),
-        plot.title = element_text(size = 20, face = 'bold'),
+        plot.title = element_text(size = 24, face = 'bold'),
         plot.title.position = "plot",
         legend.position = 'top',
         legend.text = element_text(size = 16,
                                    color = 'black'),
         legend.title = element_text(size = 16,
-                                   color = 'black')) +
+                                   color = 'black'),
+        plot.margin = unit(c(1,1,1,1), "cm")) +
   scale_color_manual(name = "Model",
                      values = c( "#d9534f", "#3baee5")) +
   scale_y_discrete(labels = labels.order.abb) +
@@ -1512,9 +1513,9 @@ fig3C <- ggplot(data = estDropIntervention,
                                     face = 'bold'),
        axis.title.y = element_text(size = 16, 
                                     face = 'bold'),
-        plot.title = element_text(size = 20, 
+        plot.title = element_text(size = 24, 
                                   face = 'bold'),
-       # plot.margin = unit(c(0.5,0.5,0.5,0), "cm"),
+       # plot.margin = unit(c(1,1,1,1), "cm"),
        plot.title.position = "plot",
        legend.text = element_text(size = 16),
        legend.title = element_text(size = 16),
@@ -1656,7 +1657,7 @@ fitModelCombinations = function(dat){
   dat.used$week = factor(dat.used$week)
   
   geeglm(fml,
-         id = Date,
+         id = FIPS,
          corstr = 'ar1',
          weights = weights,
          data = dat.used)
@@ -1976,7 +1977,7 @@ write.csv(table_fig4,
 
 ```{r fig s1, echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, include=FALSE}
 
-figS1 = lapply(weeks, countyMapPlot, county_rt = county_rt, supp = TRUE)
+figS1 = lapply(weeks_dates, countyMapPlot, county_rt = county_rt, supp = TRUE)
 
 # jpeg('output/plot/fig_s1.jpeg',
 #     width = 24*600, height = 18*600, res = 600)
@@ -1994,6 +1995,8 @@ dev.off()
 
 ```{r fig s2, echo=FALSE, fig.align='center', message=FALSE, warning=FALSE, include=FALSE}
 
+# Import and process raw intervention data. Then, cluster to guide grouping interventions based on their co-occurrences.
+source("intervention_processing.R")
 
 ```
 
@@ -2269,7 +2272,6 @@ dev.off()
 # Figure S6 - Regression with post interventions
 ```{r fig s6, echo=FALSE, fig.width=10, fig.height=6.5}
 
-
 postModelFit = function(dat, interventions_post, model){
   
   # remove interventions has not been lifted
@@ -2297,7 +2299,7 @@ postModelFit = function(dat, interventions_post, model){
                          sep = " + "))
       
       m = geeglm(fml, 
-                 id = Date,
+                 id = FIPS,
                  weights = weights, 
                  corstr = 'ar1',
                  data = dat)
@@ -2526,7 +2528,8 @@ pCompCountryTimeGee <- ggplot(data = est.time.country[est.time.country$Model == 
         legend.position = 'top') +
   scale_x_continuous(breaks = c(0.5, 0.6, 0.8, 1, 1.2, 1.4),
                      labels = c('', '-40', '-20', '0', '20', '40'),
-                     limits = c(0.5, 1.4)) +
+                     limits = c(0.5, 1.4),
+                     expand = c(0, 0)) +
   scale_color_manual(name = "Time",
                      values = c( "#d9534f", "#083765")) +
   scale_y_discrete(labels = labels.order)
@@ -2565,7 +2568,8 @@ pCompCountryTimeLL <- ggplot(data = est.time.country[est.time.country$Model == '
         legend.position = 'top') +
   scale_x_continuous(breaks = c(0.5, 0.6, 0.8, 1, 1.2, 1.4),
                      labels = c('', '-40', '-20', '0', '20', '40'),
-                     limits = c(0.5, 1.4)) + 
+                     limits = c(0.5, 1.4),
+                     expand = c(0, 0)) + 
   scale_color_manual(name = "Time",
                      values = c( "#3baee5", "#650837")) +
   scale_y_discrete(labels = labels.order)
@@ -2738,7 +2742,7 @@ modelFitCDC = function(model, dat, stateLevel){
 
     m = geeglm(fml.used,
                 data = dat,
-                id = Date,
+                id = FIPS,
                 corstr = "ar1",
                 weights = weights)
 
@@ -2880,7 +2884,8 @@ fig3ACDC <- ggplot(data = estCDC,
         legend.text = element_text(size = 16,
                                    color = 'black'),
         legend.title = element_text(size = 16,
-                                   color = 'black')) +
+                                   color = 'black'),
+        plot.margin = unit(c(1,1,1,1), 'cm')) +
   scale_color_manual(name = "Model",
                      values = c( "#d9534f", "#3baee5")) +
   scale_y_discrete(labels = labels.order.cdc) +
@@ -2949,7 +2954,7 @@ uniModelFit = function(model, dat){
           
           m = geeglm(fml.used,
                      data = data.used,
-                     id = Date,
+                     id = FIPS,
                      corstr = "ar1",
                      weights = weights)
           type = 'GEE'
@@ -3185,9 +3190,10 @@ pCompTimeGee <- ggplot(data = est.time[est.time$Model == 'GEE', ],
         # legend.position = c(0.25, 0.35)) +
         legend.position = 'top') +
   # xlim(0.5, 1.2) +
-  scale_x_continuous(breaks = c(0.5, 0.6, 0.8, 1, 1.2, 1.4),
-                     labels = c('', '-40', '-20', '0', '20', '40'),
-                     limits = c(0.5, 1.4)) +
+  scale_x_continuous(breaks = c(0.6, 0.8, 1, 1.2, 1.4),
+                     labels = c('-40', '-20', '0', '20', '40'),
+                     limits = c(0.6, 1.4),
+                     expand = c(0, 0)) +
   scale_color_manual(name = "Time",
                      values = c( "#d9534f", "#083765")) +
   scale_y_discrete(labels = labels.order)
@@ -3227,9 +3233,10 @@ pCompTimeLL <- ggplot(data = est.time[est.time$Model == 'OLS', ],
         # legend.position = c(0.25, 0.35)) +
         legend.position = 'top') +
   # xlim(0.5, 1.2) +
-  scale_x_continuous(breaks = c(0.5, 0.6, 0.8, 1, 1.2, 1.4),
-                     labels = c('', '-40', '-20', '0', '20', '40'),
-                     limits = c(0.5, 1.4)) + 
+  scale_x_continuous(breaks = c(0.6, 0.8, 1, 1.2, 1.4),
+                     labels = c('-40', '-20', '0', '20', '40'),
+                     limits = c(0.6, 1.4),
+                     expand = c(0, 0)) + 
   scale_color_manual(name = "Time",
                      values = c( "#3baee5", "#650837")) +
   scale_y_discrete(labels = labels.order)
@@ -3390,7 +3397,8 @@ pCompCase10Gee <- ggplot(data = est.county_10[est.county_10$Model == 'GEE', ],
   # xlim(0.5, 1.2) +
   scale_x_continuous(breaks = c(0.5, 0.6, 0.8, 1, 1.2, 1.4),
                      labels = c('', '-40', '-20', '0', '20', '40'),
-                     limits = c(0.5, 1.4)) +
+                     limits = c(0.5, 1.4),
+                     expand = c(0, 0)) +
   scale_color_manual(name = "Time",
                      values = c( "#d9534f", "#083765")) +
   scale_y_discrete(labels = labels.order)
@@ -3432,7 +3440,8 @@ pCompCase10LL <- ggplot(data = est.county_10[est.county_10$Model == 'OLS', ],
   # xlim(0.5, 1.2) +
   scale_x_continuous(breaks = c(0.5, 0.6, 0.8, 1, 1.2, 1.4),
                      labels = c('', '-40', '-20', '0', '20', '40'),
-                     limits = c(0.5, 1.4)) + 
+                     limits = c(0.5, 1.4),
+                     expand = c(0, 0)) + 
   scale_color_manual(name = "Time",
                      values = c( "#3baee5", "#650837")) +
   scale_y_discrete(labels = labels.order)
@@ -3606,7 +3615,8 @@ permLogL = ggplot(data = main.esti,
   scale_x_continuous(breaks = seq(0.4, 1.4, 0.2),
                      limits = c(0.4, 1.4),
                      labels = c('-60', '-40', '-20',
-                                '0', '20', '40')) +
+                                '0', '20', '40'),
+                     expand = c(0, 0)) +
   scale_y_discrete(labels = labels.order) +
   scale_color_manual(name = "",
                      values = c("Log-linear" = "#3baee5",
@@ -3646,7 +3656,7 @@ gee.random = lapply(data.randomized, function(d){
                          sep = ''))
 
   geeglm(fml,
-         id = Date,
+         id = FIPS,
          corstr = "ar1",
          weights = weights,
          data = d)
@@ -3731,7 +3741,8 @@ permGEE = ggplot(data = gee.main.esti,
   scale_x_continuous(breaks = seq(0.4, 1.4, 0.2),
                      limits = c(0.4, 1.4),
                      labels = c('-60', '-40', '-20',
-                                '0', '20', '40')) +
+                                '0', '20', '40'),
+                     expand = c(0, 0)) +
   scale_y_discrete(labels = labels.order) +
   scale_color_manual(name = "",
                      values = c("GEE" = "#d9534f",
@@ -3907,7 +3918,8 @@ permLogLWithinCounty = ggplot(data = main.esti,
   scale_x_continuous(breaks = seq(0.4, 1.4, 0.2),
                      limits = c(0.4, 1.4),
                      labels = c('-60', '-40', '-20',
-                                '0', '20', '40')) +
+                                '0', '20', '40'),
+                     expand = c(0, 0)) +
   scale_y_discrete(labels = labels.order) +
   scale_color_manual(name = "",
                      values = c("Log-linear" = "#3baee5",
@@ -3949,7 +3961,7 @@ gee.random.within = lapply(data.randomized.within, function(d){
                          sep = ''))
 
   geeglm(fml,
-         id = Date,
+         id = FIPS,
          corstr = "ar1",
          weights = weights,
          data = d)
@@ -4023,7 +4035,8 @@ permGEEWithin = ggplot(data = gee.main.esti,
   scale_x_continuous(breaks = seq(0.4, 1.4, 0.2),
                      limits = c(0.4, 1.4),
                      labels = c('-60', '-40', '-20',
-                                '0', '20', '40')) +
+                                '0', '20', '40'),
+                     expand = c(0, 0)) +
   scale_y_discrete(labels = labels.order) +
   scale_color_manual(name = "",
                      values = c("GEE" = "#d9534f",
@@ -4049,7 +4062,6 @@ grid.arrange(permGEE, permLogL,
 dev.off()
 
 ```
-
 
 # Figure S14 - Permutation of school closure only 
 
@@ -4211,7 +4223,8 @@ permLogLSc = ggplot(data = main.esti,
   scale_x_continuous(breaks = seq(0.4, 1.4, 0.2),
                      limits = c(0.4, 1.4),
                      labels = c('-60', '-40', '-20',
-                                '0', '20', '40')) +
+                                '0', '20', '40'),
+                     expand = c(0, 0)) +
   scale_y_discrete(labels = labels.order) +
   scale_color_manual(name = "",
                      values = c("Log-linear" = "#3baee5",
@@ -4253,7 +4266,7 @@ gee.random.sc = lapply(data.randomized.sc, function(d){
                          sep = ''))
 
   geeglm(fml,
-         id = Date,
+         id = FIPS,
          corstr = "ar1",
          weights = weights,
          data = d)
@@ -4338,7 +4351,8 @@ permGEESc = ggplot(data = gee.main.esti,
   scale_x_continuous(breaks = seq(0.4, 1.4, 0.2),
                      limits = c(0.4, 1.4),
                      labels = c('-60', '-40', '-20',
-                                '0', '20', '40')) +
+                                '0', '20', '40'),
+                     expand = c(0, 0)) +
   scale_y_discrete(labels = labels.order) +
   scale_color_manual(name = "",
                      values = c("GEE" = "#d9534f",
@@ -4515,7 +4529,8 @@ permLogLWithinCountySc = ggplot(data = main.esti,
   scale_x_continuous(breaks = seq(0.4, 1.4, 0.2),
                      limits = c(0.4, 1.4),
                      labels = c('-60', '-40', '-20',
-                                '0', '20', '40')) +
+                                '0', '20', '40'),
+                     expand = c(0, 0)) +
   scale_y_discrete(labels = labels.order) +
   scale_color_manual(name = "",
                      values = c("Log-linear" = "#3baee5",
@@ -4557,7 +4572,7 @@ gee.random.within.sc = lapply(data.randomized.within.sc, function(d){
                          sep = ''))
 
   geeglm(fml,
-         id = Date,
+         id = FIPS,
          corstr = "ar1",
          weights = weights,
          data = d)
@@ -4631,7 +4646,8 @@ permGEEWithinSc = ggplot(data = gee.main.esti,
   scale_x_continuous(breaks = seq(0.4, 1.4, 0.2),
                      limits = c(0.4, 1.4),
                      labels = c('-60', '-40', '-20',
-                                '0', '20', '40')) +
+                                '0', '20', '40'),
+                     expand = c(0, 0)) +
   scale_y_discrete(labels = labels.order) +
   scale_color_manual(name = "",
                      values = c("GEE" = "#d9534f",
@@ -4703,7 +4719,8 @@ wp = ggplot(data = data.google,
                    labels = xLabs) +
   scale_y_continuous(name = 'Change in workplace presence, %',
                      breaks = seq(-80, 20, 20),
-                     limits = c(-80, 20))
+                     limits = c(-80, 20),
+                     expand = c(0, 0))
 
 # jpeg("output/plot/fig_s15.jpeg",
 #      width = 9*600, height = 7.5*600, res = 600)
@@ -5019,7 +5036,7 @@ fitMediation = function(dat, var){
   ms = lapply(1:3, function(x){
     
      m = geeglm(as.formula(fs[[x]]), 
-                id = Date,
+                id = FIPS,
                 weights = weights, 
                 corstr = 'ar1',
                 data = dat)
@@ -5110,7 +5127,8 @@ medGEEPlot = ggplot(data = medGEE,
         legend.position = 'right') +
   scale_x_continuous(breaks = c(0.25, 0.5, 0.75, 1, 1.25, 1.5),
                        labels = c('-75', '-50', '-25', '0', '25', '50'),
-                       limits = c(0.25, 1.5)) + 
+                       limits = c(0.25, 1.5),
+                     expand = c(0, 0)) + 
   scale_y_discrete(labels = labels.order) +
   scale_color_manual(name = 'Model type',
                      values = c('#ffc2cd', '#ff6289', '#ff084a', '#7f0425'))  + 
@@ -5604,17 +5622,27 @@ pTwoWeeksGEE <- ggplot(data = est.comp.gee,
        y = '',
        title = 'a')+
     theme_classic() +
-  theme(axis.text.x = element_text(angle = 0, hjust = 0.5, size = 14),
-        axis.text.y = element_text(size = 14),
-        strip.text.x = element_text(size = 14, face = "bold"),
-        strip.background = element_blank(),
-        legend.title = element_text(size = 14),
-        legend.text = element_text(size = 14),
-        axis.title.x = element_text(size = 14),
-        axis.title.y = element_text(size = 14)) +
+  theme(axis.text.x = element_text(size = 16,
+                                     color = 'black'),
+          axis.title.x = element_text(size = 16,
+                                      face = 'bold'),
+          axis.title.y = element_text(size = 16,
+                                      face = 'bold'),
+          axis.text.y = element_text(size = 16,
+                                     color = 'black'),
+          legend.title = element_text(size = 16),
+          legend.text = element_text(size = 16),
+          panel.grid.major = element_blank(),
+          panel.background = element_blank(),
+          panel.grid.minor = element_blank(),
+          plot.title = element_text(size = 20, face = 'bold'),
+          plot.title.position = "plot",
+          legend.position = 'top',
+        plot.margin = unit(c(1,1,1,1), 'cm')) +
   scale_x_continuous(breaks = seq(0.4, 1.4, 0.2),
                      labels = c('-60', '-40', '-20', '0', '20', '40'),
-                     limits = c(0.4, 1.4)) +
+                     limits = c(0.4, 1.4),
+                     expand = c(0, 0)) +
   scale_y_discrete(labels = labels.order) +
   scale_color_manual(name = 'Data set',
                      values = c('#d9534f', '#eca9a7'))
@@ -5684,17 +5712,27 @@ pTwoWeeksLogLm <- ggplot(data = est.comp,
        y = "",
        title = 'b')+
     theme_classic() +
-  theme(axis.text.x = element_text(angle = 0, hjust = 0.5, size = 14),
-        axis.text.y = element_text(size = 14),
-        strip.text.x = element_text(size = 14, face = "bold"),
-        strip.background = element_blank(),
-        legend.title = element_text(size = 14),
-        legend.text = element_text(size = 14),
-        axis.title.x = element_text(size = 14),
-        axis.title.y = element_text(size = 14)) +
+  theme(axis.text.x = element_text(size = 16,
+                                     color = 'black'),
+          axis.title.x = element_text(size = 16,
+                                      face = 'bold'),
+          axis.title.y = element_text(size = 16,
+                                      face = 'bold'),
+          axis.text.y = element_text(size = 16,
+                                     color = 'black'),
+          legend.title = element_text(size = 16),
+          legend.text = element_text(size = 16),
+          panel.grid.major = element_blank(),
+          panel.background = element_blank(),
+          panel.grid.minor = element_blank(),
+          plot.title = element_text(size = 20, face = 'bold'),
+          plot.title.position = "plot",
+          legend.position = 'top',
+        plot.margin = unit(c(1,1,1,1), 'cm')) +
   scale_x_continuous(breaks = seq(0.4, 1.4, 0.2),
                      labels = c('-60', '-40', '-20', '0', '20', '40'),
-                     limits = c(0.4, 1.4)) +
+                     limits = c(0.4, 1.4),
+                     expand = c(0, 0)) +
   scale_y_discrete(labels = labels.order) +
   scale_color_manual(name = 'Data set',
                      values = c('#3BAEE5', '#9dd6f2'))
@@ -5943,7 +5981,7 @@ est.comp.sp = getEstCompSp(modelsSP)
 
 est.comp.sp = rbind(est.comp.sp,
                     est[est$Model == 'GEE',
-                        -ncol(est)])
+                        1:5])
 est.comp.sp$Model[est.comp.sp$Model == 'GEE'] = 'Main'
 
 pSPCorr <- ggplot(data = est.comp.sp,
@@ -5988,28 +6026,34 @@ pSPCorr <- ggplot(data = est.comp.sp,
                        limits = c(0.4, 1.4), 
                        expand = c(0, 0))
 
-jpeg("output/plot/fig_spatial.jpeg",
+jpeg("output/plot/fig_s20.jpeg",
      width = 10*600, height = 7.5*600, res = 600)
-pdf("output/plot/fig_spatial.pdf",
+pdf("output/plot/fig_s20.pdf",
      width = 10, height = 7.5)
 pSPCorr
 dev.off()
 
 ```
 
-# Figure S21 - Bootstrap counties
+# Figure S21 - culter-robust analysis
 
 ```{r fig s21, include=FALSE,  warning=FALSE, message=FALSE}
 
-getEst <-function(model.used) {# 1 = duration; 2 = categorical
-
+getMeltCRSD = function(dat){
+  
+  fml.used = as.formula(log_Rt ~ log_Rt_previous + log10_popsize + med_income + percent_poverty + med_age + prop_white + prop_belowCollege + log10_popdense + daycare_close + face_mask + lifestyle_close + lv3_stay_home + ban_nursing_home_visit + suspend_medical + earliest_date_school_closed + state_name)
+  
+  m = feols(fml.used,
+            weights = dat$weights,
+            data = dat)
+  
   nm = c("log10_popsize",
          "med_income",
          "percent_poverty",
          "med_age",
-         'prop_white',
-         'prop_belowCollege',
-         'log10_popdense',
+         "prop_white",
+         "prop_belowCollege",
+         "log10_popdense",
          "face_mask",
          "suspend_medical",
          "ban_nursing_home_visit",
@@ -6017,81 +6061,53 @@ getEst <-function(model.used) {# 1 = duration; 2 = categorical
          "daycare_close",
          "lv3_stay_home",
          "lifestyle_close")
-
-  esti = summary(model.used)$coefficients
-  ci = cbind(esti[,1] - 1.96*esti[ ,2],
-             esti[,1] + 1.96*esti[ ,2])
-  rownames(ci) = rownames(esti)
-
-  tem = data.frame(intervention = nm,
-                   coefficients = esti[nm, 1],
-                   ci.lower = ci[nm, 1],
-                   ci.upper = ci[nm, 2])
-
-
+  
+  # standard errors: standard, two way (county * time)
+  smr = list(summary(m),
+             summary(m,
+                     cluster = ~ FIPS + Date))
+  
+  model.type = c('main OLS',
+                 'County-week cluster')
+  
+  tem = lapply(1:2, function(x){
+    
+    s = smr[[x]]
+    
+    esti = s$coefficients[nm]
+    ci = cbind(esti - 1.96*s$se[nm],
+               esti + 1.96*s$se[nm])
+    rownames(ci) = rownames(esti)
+    
+    tem = data.frame(intervention = nm,
+                     coefficients = esti,
+                     ci.lower = ci[,1],
+                     ci.upper = ci[,2],
+                     Model = model.type[x],
+                     variables = c(rep("Census", 7),
+                                   rep("Intervention",
+                                       length(nm)-7)))
+    
+    tem
+    
+  })
+  
+  tem = do.call('rbind', tem)
+  
   tem$coefficients = 10^(tem$coefficients)
   tem$ci.lower = 10^(tem$ci.lower)
   tem$ci.upper = 10^(tem$ci.upper)
-
+  
   tem$intervention = factor(tem$intervention,
                             levels = nm)
-
+  
   tem
-
-
-}
-
-
-getBootstrapData = function(data, FIPS, nCounty){
-  
-  fips_new = sample(FIPS,
-                    size = nCounty,
-                    replace = TRUE)
-  
-  data.new = lapply(fips_new, function(i){
-    
-    data[data$FIPS == i, ]
-    
-  })
-  data.new = do.call('rbind', data.new)
-  
-  data.new = data.new[ ,!(colnames(data.new) %in% c("date_all_school_closed",
-                                                    "date_partial_school_closed"))]
-  data.new = data.new[rowSums(is.na(data.new)) == 0, ] 
-  
-  model.new = modelFit(model = 'main',
-                       dat = data.new,
-                       stateLevel = FALSE)
-  
-  est.new = getEst(model.new)
-  
-  est.new
   
 }
 
-est.bootstrap = lapply(1:100, function(x) getBootstrapData(data = data.google,
-                                                           FIPS = FIPS,
-                                                           nCounty = length(FIPS)))
+estRobustCluster = getMeltCRSD(dat)
 
-est.bootstrap = do.call('rbind', est.bootstrap)
-
-smr.est.bootstrap = est.bootstrap %>%
-  group_by(intervention) %>%
-  summarise(Q50 = quantile(coefficients, 0.5),
-            Q025 = quantile(coefficients, 0.025),
-            Q975 = quantile(coefficients, 0.975)) %>%
-  mutate(Model = 'Bootstrap') %>%
-  rename(coefficients = Q50,
-         ci.lower = Q025,
-         ci.upper = Q975)
-
-smr.est.bootstrap = rbind(smr.est.bootstrap,
-                          est[est$Model == 'GEE',
-                              -ncol(est)])
-
-smr.est.bootstrap$Model[smr.est.bootstrap$Model == 'GEE'] = 'Main'
-
-pBootstrap <- ggplot(data = smr.est.bootstrap,
+figRC <- ggplot(data = estRobustCluster,
                 aes(y = factor(intervention,
                                levels = intv.order),
                     x = coefficients,
@@ -6101,43 +6117,45 @@ pBootstrap <- ggplot(data = smr.est.bootstrap,
   geom_errorbar(aes(xmin=ci.lower,
                     xmax=ci.upper,
                     color = Model), width=.5,
-    position=position_dodge(0.5)) +
+                position=position_dodge(0.5)) +
   geom_vline(xintercept = 1,
              linetype = 3) +
   labs(x = expression(paste("Relative changes in R"[eff], " ,%")),
-       y = "",
+       y = '',
        title = '')+
-    theme_classic() +
+  theme_classic() +
   theme(axis.text.x = element_text(angle = 0, 
                                    hjust = 0.5, 
-                                   size = 14,
+                                   size = 16,
                                    color = 'black'),
-        axis.text.y = element_text(size = 14,
+        axis.text.y = element_text(size = 16,
                                    color = 'black'),
-        strip.text.x = element_text(size = 14, face = "bold"),
+        strip.text.x = element_text(size = 16, face = "bold"),
         strip.background = element_blank(),
-        axis.title.x = element_text(size = 14, face = 'bold'),
-        axis.title.y = element_text(size = 14, face = 'bold'),
+        axis.title.x = element_text(size = 16, face = 'bold'),
+        axis.title.y = element_text(size = 16, face = 'bold'),
         plot.title = element_text(size = 20, face = 'bold'),
         plot.title.position = "plot",
-        plot.margin = unit(c(2,1,1,1), "cm"),
-        legend.position = 'right',
-        legend.text = element_text(size = 14),
-        legend.title = element_text(size = 14)) +
+        legend.position = 'top',
+        legend.text = element_text(size = 16,
+                                   color = 'black'),
+        legend.title = element_text(size = 16,
+                                    color = 'black'),
+        plot.margin = unit(c(1,1,1,1), "cm")) +
   scale_color_manual(name = "Model",
-                     values = c( "#9b9fa2", "#d9534f"),
-                     labels = c('Bootstrap', 'Main')) +
+                     values = c( "#5488a5", "#3baee5")) +
   scale_y_discrete(labels = labels.order) +
-    scale_x_continuous(breaks = seq(0.4, 1.4, 0.2),
-                       labels = c('-60', '-40', '-20', '0', '20', '40'),
-                       limits = c(0.4, 1.4), 
-                       expand = c(0, 0))
+  scale_x_continuous(breaks = seq(0.5, 1.3, 0.1),
+                     labels = c('-50', '-40', '-30', 
+                                '-20', '-10', '0', '10', '20', '30'),
+                     limits = c(0.5, 1.3),
+                     expand = c(0, 0))
 
 jpeg("output/plot/fig_s21.jpeg",
      width = 10*600, height = 7.5*600, res = 600)
 pdf("output/plot/fig_s21.pdf",
      width = 10, height = 7.5)
-pBootstrap
+figRC
 dev.off()
 
 
@@ -6255,7 +6273,8 @@ pDeconv <- ggplot(data = est.case,
   scale_y_discrete(labels = labels.order) +
   scale_x_continuous(breaks = seq(0.4, 1.4, 0.2),
                     labels = c('-60', '-40', '-20', '0', '20', '40'),
-                    limits = c(0.4, 1.4))
+                    limits = c(0.4, 1.4), 
+                    expand = c(0, 0))
 
 # jpeg("output/plot/fig_s22.jpeg",
 #      width = 10*600, height = 7.5*600, res = 600)
@@ -6379,8 +6398,9 @@ pDeconvDeath <- ggplot(data = est.death.deconv,
                      values = c( "#d9534f", "#3baee5")) +
   scale_y_discrete(labels = labels.order) +
   scale_x_continuous(breaks = seq(0.2, 2, 0.2),
-                       labels = c('-80', '-60', '-40', '-20', '0', '20', '40', '60', '80', 100),
-                       limits = c(0.2, 2))
+                     labels = c('-80', '-60', '-40', '-20', '0', '20', '40', '60', '80', 100),
+                     limits = c(0.2, 2),
+                     expand = c(0, 0))
 
 jpeg("output/plot/fig_s23.jpeg",
      width = 10*600, height = 7.5*600, res = 600)
@@ -6392,8 +6412,8 @@ dev.off()
 ```
 
 
-# Figure 25 - Fixed effect of county
-```{r}
+# Figure 24 - Fixed effect of county
+```{r fig s24}
 
 dat = data.google
 dat = dat[ ,!(colnames(dat) %in% c("date_all_school_closed",
@@ -6453,7 +6473,8 @@ modelFitCountyFixed = function(dat){
 estFixedCounty = modelFitCountyFixed(dat)
 
 estFixedCounty = rbind(est[est$Model == 'OLS' &
-                             est$variables == 'Intervention', ],
+                             est$variables == 'Intervention', 
+                           1:6],
                        estFixedCounty)
 
 figFixed <- ggplot(data = estFixedCounty,
@@ -6501,9 +6522,9 @@ figFixed <- ggplot(data = estFixedCounty,
                      expand = c(0, 0))
 
 
-jpeg("output/plot/fig_s25.jpeg",
+jpeg("output/plot/fig_s24.jpeg",
      width = 10*600, height = 7.5*600, res = 600)
-pdf("output/plot/fig_s25.pdf",
+pdf("output/plot/fig_s24.pdf",
      width = 10, height = 7.5)
 figFixed
 dev.off()
@@ -6805,235 +6826,3 @@ kable(round(prop.table(comp), 3)*100)
 
 ```
 
-# --------------------------------------------------------------------------------------
-
-```{r individual rt}
-
-summary_res = read.csv('/Volumes/GoogleDrive/My Drive/R projects/Coronavirus/covidIntervention/public/data/summary_estimates_rt_each_run.csv',
-                       header = TRUE,
-                       stringsAsFactors = FALSE)
-
-figIndiRtEst = ggplot(data = summary_res,
-       aes(y = factor(intervention,
-                      levels = intv.order),
-           x = Q50,
-           color = Model,
-           shape = Model)) +
-  geom_point(position = position_dodge(0.5)) +
-  geom_errorbar(aes(xmin=Q025,
-                    xmax=Q975,
-                    color = Model), width=.5,
-                position=position_dodge(0.5)) +
-  geom_vline(xintercept = 1,
-             linetype = 3) +
-  labs(x = expression(paste("Relative changes in R"[eff], " ,%")),
-       y = '',
-       title = '')+
-  theme_classic() +
-  theme(axis.text.x = element_text(angle = 0, 
-                                   hjust = 0.5, 
-                                   size = 16,
-                                   color = 'black'),
-        axis.text.y = element_text(size = 16,
-                                   color = 'black'),
-        strip.text.x = element_text(size = 16, face = "bold"),
-        strip.background = element_blank(),
-        axis.title.x = element_text(size = 16, face = 'bold'),
-        axis.title.y = element_text(size = 16, face = 'bold'),
-        plot.title = element_text(size = 20, face = 'bold'),
-        plot.title.position = "plot",
-        legend.position = 'top',
-        legend.text = element_text(size = 16,
-                                   color = 'black'),
-        legend.title = element_text(size = 16,
-                                    color = 'black')) +
-  scale_color_manual(name = "Model",
-                     values = c( "#d9534f", "#3baee5")) +
-  scale_y_discrete(labels = labels.order) +
-  scale_x_continuous(breaks = seq(0.5, 1.6, 0.1),
-                       labels = c('-50', '-40', '-30', 
-                                  '-20', '-10', '0', '10', '20', '30', '40', '50', '60'),
-                       limits = c(0.5, 1.6),
-                       expand = c(0, 0))
-
-
-jpeg('output/plot/individual_rt_est.jpeg', width = 10*600, height = 8.3*600, res = 600)
-# pdf('output/plot/individual_rt_est.pdf', width = 10, height = 8.3)
-figIndiRtEst
-
-dev.off()
-
-```
-
-```{r spatial correlation}
-
-names(labels.order)[14] = 'earliest_date_school_closed'
-intv.order[14] = 'earliest_date_school_closed'
-
-modelFitSpatial = function(model, dat){
-  
-  print(model)
-  
-  state_interventions = c("daycare_close",
-                          "face_mask",
-                          "lifestyle_close",
-                          "lv3_stay_home",
-                          "ban_nursing_home_visit",
-                          "suspend_medical",
-                          "earliest_date_school_closed")
-  
-  # set up
-  predictors = list(county_census = c("log10_popsize",
-                                      "med_income",
-                                      "percent_poverty",
-                                      'med_age',
-                                      'prop_white',
-                                      'prop_belowCollege',
-                                      "log10_popdense"),
-                    
-                    state_interventions = state_interventions,
-                    
-                    state = "state_name",
-                    
-                    autoregressive = "log_Rt_previous")
-
-  
-  model.predictors = list(main = c('county_census',
-                                   'state_interventions',
-                                   'state'),
-                          
-                          spatial = c('autoregressive',
-                                     'county_census',
-                                     'state_interventions',
-                                     'state')
-  )
-  
-  xs = unlist(sapply(model.predictors[[model]], function(x) predictors[[x]]))
-  
-  fml.log <-  paste('log_Rt ~ ',
-                    paste(xs, collapse = " + "),
-                    sep = "")
-  
-  fml.used <- as.formula(fml.log)
-  
-  if(model == 'main'){
-    
-    m = geeglm(fml.used,
-               data = dat,
-               id = Date,
-               corstr = "ar1")
-    
-  }
-  
-  if(model == 'spatial'){
-    
-    m = geeglm(fml.used,
-               data = dat,
-               id = FIPS,
-               corstr = "exchangeable")
-    
-    
-  }
-  
-  return(m)
-  
-}
-
-modelsSpatial = lapply(c('main', 'spatial'), modelFitSpatial, dat = dat)
-
-estSpatial <- lapply(1:2,
-                     function(model){# 1 = gee; 2 = log-lm
-
- nm = c("log10_popsize",
-         "med_income",
-         "percent_poverty",
-         "med_age",
-         "prop_white",
-         "prop_belowCollege",
-         "log10_popdense",
-         "face_mask",
-         "suspend_medical",
-         "ban_nursing_home_visit",
-         "earliest_date_school_closed",
-         "daycare_close",
-         "lv3_stay_home",
-         "lifestyle_close")
-  
-   type = c('main', 'spatial')[model]
-
-  esti = summary(modelsSpatial[[model]])$coefficients
-  ci = cbind(esti[,1] - 1.96*esti[ ,2],
-             esti[,1] + 1.96*esti[ ,2])
-  rownames(ci) = rownames(esti)
-
-  tem = data.frame(intervention = nm,
-                   coefficients = esti[nm, 1],
-                   ci.lower = ci[nm, 1],
-                   ci.upper = ci[nm, 2],
-                   Model = type,
-                   variables = c(rep("Census", 7),
-                                 rep("Intervention",
-                                     length(nm)-7)))
-
-  tem$coefficients = 10^(tem$coefficients)
-  tem$ci.lower = 10^(tem$ci.lower)
-  tem$ci.upper = 10^(tem$ci.upper)
-
-  tem$intervention = factor(tem$intervention,
-                            levels = nm)
-
-  tem
-
-
-})
-
-estSpatial = do.call('rbind', estSpatial)
-
-
-pCompSpatialCorr <- ggplot(data = estSpatial,
-                aes(y = factor(intervention,
-                               levels = intv.order),
-                    x = coefficients,
-                    color = Model,
-                    shape = Model)) +
-  geom_point(position = position_dodge(0.5)) +
-  geom_errorbar(aes(xmin=ci.lower,
-                    xmax=ci.upper,
-                    color = Model), width=.5,
-    position=position_dodge(0.5)) +
-  geom_vline(xintercept = 1,
-             linetype = 3) +
-  labs(x = expression(paste("Relative changes in R"[eff], " ,%")),
-       y = "",
-       title = '')+
-    theme_classic() +
-  theme(axis.text.x = element_text(angle = 0, 
-                                   hjust = 0.5, 
-                                   size = 14,
-                                   color = 'black'),
-        axis.text.y = element_text(size = 14,
-                                   color = 'black'),
-        strip.text.x = element_text(size = 14, face = "bold"),
-        strip.background = element_blank(),
-        axis.title.x = element_text(size = 14, face = 'bold'),
-        axis.title.y = element_text(size = 14, face = 'bold'),
-        plot.title = element_text(size = 20, face = 'bold'),
-        plot.title.position = "plot",
-        plot.margin = unit(c(2,1,1,1), "cm"),
-        legend.position = 'top') +
-  scale_x_continuous(breaks = c(0.4, 0.6, 0.8, 1, 1.2, 1.4),
-                     labels = c('-60', '-40', '-20', '0', '20', '40'),
-                     limits = c(0.4, 1.4)) +
-  scale_color_manual(name = "Model",
-                     values = c( "#d9534f", "#083765")) +
-  scale_y_discrete(labels = labels.order)
-
-
-jpeg('output/plot/spatial_corr_gee.jpeg', width = 10*600, height = 8.3*600, res = 600)
-# pdf('output/plot/spatial_corr_gee.pdf', width = 10, height = 8.3)
-pCompSpatialCorr
-
-dev.off()
-
-
-```
