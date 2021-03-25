@@ -13,7 +13,7 @@ Data on case and death numbers, covariates (NPIs and country-level characteristi
 
 [Output](https://github.com/UF-IDD/US_County_Rt/tree/main/output) folder will store for plots and tables in the manuscript.
 
-Cleaning and grouping raw data on [state-level NPIs](https://github.com/UF-IDD/US_County_Rt/blob/main/data/intervention_googlesheet_raw_20200702.csv) were performed with [intervention_processing.R](https://github.com/UF-IDD/US_County_Rt/blob/main/intervention_processing.R), including plot Figure S2.
+Cleaning and grouping [raw data on state-level NPIs](https://github.com/UF-IDD/US_County_Rt/blob/main/data/intervention_googlesheet_raw_20200702.csv) were performed with [intervention_processing.R](https://github.com/UF-IDD/US_County_Rt/blob/main/intervention_processing.R), including plot Figure S2.
 
 ## County-level school closure
 Here we provided the data on county-level school closures dates ([school.csv](https://github.com/UF-IDD/US_County_Rt/blob/main/data/school.csv)). Data on county-level public school (K-12) closure were collected by the UFCOVID Interventions Team by consulting the government websites of school district, county and state and local news sources.
