@@ -4,7 +4,7 @@
 
 Correspondance regarding this study should be addressed to Derek A.T. Cummings (datc@ufl.edu), Carl D. Laird (cdlaird@sandia.gov) or Justin Lessler (justin@jhu.edu).
 
-All statatiscal analyses were performed with R version 4.0.2 on Mac. The main and sensitivity analyses were performed with the markdown file [US_Rt_interventions.Rmd](https://github.com/UF-IDD/US_County_Rt/blob/main/US_Rt_interventions.Rmd), which will return figures and tables shown in the manuscript.
+All statatiscal analyses were performed with R version 4.0.2 on Mac. The main and sensitivity analyses were performed with the markdown file [US_Rt_interventions.Rmd](https://github.com/UF-IDD/US_County_Rt/blob/main/US_Rt_interventions.Rmd), which will return figures and tables shown in the manuscript. Kniting the entire script is not recommended, as some permutations analyses will take hours to run and may reach the memory limit in R.
 
 ## Instruction
 Data on estimated effective numbers can be found in [rt](https://github.com/UF-IDD/US_County_Rt/tree/main/rt) folder with a seperate [Disclaimer](https://github.com/UF-IDD/US_County_Rt/blob/main/rt/README.md) for these estimates.
