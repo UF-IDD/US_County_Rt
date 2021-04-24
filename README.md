@@ -25,6 +25,7 @@ Below is the list of external repositories/resources that are used for the manus
 1. Daily number of confirmed COVID-19 cases and deaths: [USAFacts](https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/)
 2. County-level characteristics: ["tidycensus" package version 0.9.9.2](https://cran.r-project.org/web/packages/tidycensus/index.html)
 3. State-level NPIs: [COVID-19 US State Policy Database, CUSP](https://docs.google.com/spreadsheets/d/1zu9qEWI8PsOI_i8nI_S29HDGHlIp2lfVMsGxpQ5tvAQ/edit#gid=973655443)
-4. Inference of effective reproduction number
+4. Workplace attendance was derived from [Google Community Mobility Reports](https://www.google.com/covid19/mobility)on September 16, 2020. 
+5. Inference of effective reproduction number
 [Pyomo](http://www.pyomo.org);[IPOPT](https://coin-or.github.io/Ipopt/); and Epi_inference(to be released; details can be request to Carl Laird via cdlaird@sandia.gov)
-5. SEIR model structure: [Lemaitre, J.C., Grantz, K.H., Kaminsky, J. et al. A scenario modeling pipeline for COVID-19 emergency planning. Sci Rep 11, 7534 (2021). https://doi.org/10.1038/s41598-021-86811-0](https://www.nature.com/articles/s41598-021-86811-0#Bib1)
+6. SEIR model structure: [Lemaitre, J.C., Grantz, K.H., Kaminsky, J. et al. A scenario modeling pipeline for COVID-19 emergency planning. Sci Rep 11, 7534 (2021). https://doi.org/10.1038/s41598-021-86811-0](https://www.nature.com/articles/s41598-021-86811-0#Bib1)
