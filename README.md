@@ -1,6 +1,6 @@
 #  Effect of specific non-pharmaceutical intervention policies on SARS-CoV-2 transmission in the counties of the United States
 
-[Preprint at medRxiv](https://www.medrxiv.org/content/10.1101/2020.10.29.20221036v1): Yang B, Huang AT, Garcia-Carreras B, Hart WE, Staid A, Hitchings M, Lee EC, Howe CJ, Grantz KH, Wesolowski A, Lemaitre JC, Rattigan S, Moreno C, Borgert B, Dale C, Quigley N, Cummings A, McLorg A, LoMonaco K, Schlossberg S, Barron-Kraus D, Shrock, UFCOVID Interventions Team, Lessler J, Laird CD, Cummings DAT. Effect of specific non-pharmaceutical intervention policies on SARS-CoV-2 transmission in the counties of the United States. 2020 medRxiv.
+Yang B, Huang AT, Garcia-Carreras B, Hart WE, Staid A, Hitchings M, Lee EC, Howe CJ, Grantz KH, Wesolowski A, Lemaitre JC, Rattigan S, Moreno C, Borgert B, Dale C, Quigley N, Cummings A, McLorg A, LoMonaco K, Schlossberg S, Barron-Kraus D, Shrock, UFCOVID Interventions Team, Lessler J, Laird CD, Cummings DAT. [Effect of specific non-pharmaceutical intervention policies on SARS-CoV-2 transmission in the counties of the United States.](https://www.nature.com/articles/s41467-021-23865-8) Nat Commun 12, 3560 (2021).
 
 Correspondance regarding this study should be addressed to Derek A.T. Cummings (datc@ufl.edu), Carl D. Laird (cdlaird@sandia.gov) or Justin Lessler (justin@jhu.edu).
 
